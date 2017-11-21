@@ -1,8 +1,33 @@
+export BROWSER=firefox
+export EDITOR=vim
 
 alias sshuml='ssh wconner@mercury.cs.uml.edu'
 alias update='sudo apt-get update && sudo apt-get upgrade'
 # For modifying config repo (dotfiles)
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias source='source ~/.bashrc'
+
+function light () {
+	sed -i '/\[colors\]/Q' $HOME/.config/termite/config
+	cat $HOME/.config/termite/solarized-light >> $HOME/.config/termite/config
+	eval `dircolors $HOME/.dir_colors/dircolors.ansi-light`
+	printf "Type 'Control-Shift-R' to reload termite config\n"
+}
+
+function dark () {
+	sed -i '/\[colors\]/Q' $HOME/.config/termite/config
+	cat $HOME/.config/termite/solarized-dark >> $HOME/.config/termite/config
+	eval `dircolors $HOME/.dir_colors/dircolors.ansi-dark`
+	printf "Type 'Control-Shift-R' to reload termite config\n"
+}
+
+# DIRCOLORS
+eval `dircolors $HOME/.dir_colors/dircolors.ansi-dark`
+#eval `dircolors $HOME/.dir_colors/dircolors.ansi-light`
+
+# Bash Prompt
+PS1='${debian_chroot:+($debian_chroot)}\[\e[01;35m\]\w\[\e[00m\]\$ '
+
 #################################################
 
 # If not running interactively, don't do anything

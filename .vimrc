@@ -1,6 +1,7 @@
 syntax enable 		" allows for highlighting
 
-colo desert
+"set background=dark
+colorscheme desert
 
 " Tabs and Spaces
 set tabstop=4		" visually show 4 spaces per tab
@@ -24,7 +25,7 @@ set smartcase       " These 2 lines ignores case in search unless an uppercase l
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-"Movement
+" Movement
 " Move vertically by visual line
 noremap j gj		
 noremap k gk
